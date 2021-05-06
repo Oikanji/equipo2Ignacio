@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/EscenaIgnacio.unity
+    guid: 958cf495b47351e40bfad3cecc5716e3
+  - enabled: 1
+    path: Assets/Scenes/NightScene.unity
+    guid: ce767ffb1d6867b45bf9de61264fa420
   m_configObjects: {}
