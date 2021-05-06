@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 258861226}
   - component: {fileID: 258861225}
   - component: {fileID: 258861224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma
   m_TagString: portal
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 506224895}
   - component: {fileID: 506224894}
   - component: {fileID: 506224898}
-  - component: {fileID: 506224899}
+  - component: {fileID: 506224900}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -345,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506224893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06, y: -1.62, z: -1.2988281}
+  m_LocalPosition: {x: -5.91, y: -1.2, z: -1.2988281}
   m_LocalScale: {x: 9.0242, y: 9.0242, z: 9.0242}
   m_Children: []
   m_Father: {fileID: 0}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660afe3dde5101d4cb31ae59db943fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &506224899
+--- !u!114 &506224900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,11 +372,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 506224893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4061d03f02e0b91408324e7529a72384, type: 3}
+  m_Script: {fileID: 11500000, guid: 85d52564b5cbb304a83101e19527b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.02
-  panel: {fileID: 0}
+  velocidad: 1
+  velocidadMaxima: 2
+  fuerzaPrimerSalto: {x: 0, y: 8}
+  fuerzaSegundoSalto: {x: 0, y: 5}
+  numeroDeSaltos: 2
+  mascara:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  sobreElSuelo: 0
+  desplazamiento: {x: 1, y: 0, z: 0}
+  particulas: {fileID: 0}
+  particulasWin: {fileID: 0}
 --- !u!1 &689494713
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +495,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1411989247}
   - component: {fileID: 1411989246}
-  - component: {fileID: 1411989245}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -493,14 +502,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1411989245
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411989244}
-  m_Enabled: 1
 --- !u!20 &1411989246
 Camera:
   m_ObjectHideFlags: 0
