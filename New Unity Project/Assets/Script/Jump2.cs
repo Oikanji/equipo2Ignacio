@@ -8,7 +8,7 @@ public class Jump2 : MonoBehaviour
     SpriteRenderer renderDelSprite;
     Animator animator;
     public float velocidad, velocidadMaxima;
-    bool estoyGirado = false;
+   // bool estoyGirado = false;
     public Vector2 fuerzaPrimerSalto, fuerzaSegundoSalto;
     private int numeroDeSaltos = 0;
     public LayerMask mascara;
