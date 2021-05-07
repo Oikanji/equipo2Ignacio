@@ -24,6 +24,7 @@ public class Jump2 : MonoBehaviour
     void Start()
     {
         miRigidbody = GetComponent<Rigidbody2D>();
+        renderDelSprite = GetComponent<SpriteRenderer>();
         //animator = GetComponent<Animator>();
     }
 
@@ -108,7 +109,7 @@ public class Jump2 : MonoBehaviour
                     if (numeroDeSaltos == 0) //Si es la primera vez que salta
                     {
                         miRigidbody.velocity += fuerzaPrimerSalto; //Empujamos al personaje hacia la dirección que le pasemos
-                        SonidoSalto.Play();
+                     //   SonidoSalto.Play();
                     }
                     numeroDeSaltos++; //Sumamos 1 al contador de saltos
                 }

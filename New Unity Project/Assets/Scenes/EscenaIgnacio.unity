@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d52564b5cbb304a83101e19527b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 1
+  velocidad: 1.75
   velocidadMaxima: 2
   fuerzaPrimerSalto: {x: 0, y: 8}
   fuerzaSegundoSalto: {x: 0, y: 5}
@@ -662,7 +662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057539656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.028, y: -3.19, z: -0.640625}
+  m_LocalPosition: {x: 11.98, y: 5.27, z: -0.640625}
   m_LocalScale: {x: 25.05329, y: 3.136206, z: 10.041}
   m_Children: []
   m_Father: {fileID: 0}
