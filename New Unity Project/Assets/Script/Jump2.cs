@@ -10,7 +10,7 @@ public class Jump2 : MonoBehaviour
     public float velocidad, velocidadMaxima;
     bool estoyGirado = false;
     public Vector2 fuerzaPrimerSalto, fuerzaSegundoSalto;
-    public int numeroDeSaltos = 0;
+    private int numeroDeSaltos = 0;
     public LayerMask mascara;
     public bool sobreElSuelo;
     public Vector3 desplazamiento;
@@ -72,32 +72,32 @@ public class Jump2 : MonoBehaviour
 
         if (gameWin == false)
         {
-            if (Input.GetKey(KeyCode.A)) //andar hacia la izquierda
-            {
-                if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
-                {
-                    miRigidbody.AddForce(Vector2.left * velocidad);
-                }
-                //AQUI
-                if (!estoyGirado) //estoyGirado == false
-                {
-                    renderDelSprite.flipX = true; //Activamos la casilla Flip
-                    estoyGirado = true;
-                }
-            }
-            if (Input.GetKey(KeyCode.D)) //andar hacia la derecha
-            {
-                if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
-                {
-                    miRigidbody.AddForce(Vector2.right * velocidad);
-                }
-                //AQUI
-                if (estoyGirado)
-                {
-                    renderDelSprite.flipX = false; //Desactivamos la casilla Flip
-                    estoyGirado = false; //Guardamos nuestra variable girado como false
-                }
-            }
+            //if (Input.GetKey(KeyCode.A)) //andar hacia la izquierda
+            //{
+            //    if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
+            //    {
+            //        miRigidbody.AddForce(Vector2.left * velocidad);
+            //    }
+            //    //AQUI
+            //    if (!estoyGirado) //estoyGirado == false
+            //    {
+            //        renderDelSprite.flipX = true; //Activamos la casilla Flip
+            //        estoyGirado = true;
+            //    }
+            //}
+            //if (Input.GetKey(KeyCode.D)) //andar hacia la derecha
+            //{
+            //    if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
+            //    {
+            //        miRigidbody.AddForce(Vector2.right * velocidad);
+            //    }
+            //    //AQUI
+            //    if (estoyGirado)
+            //    {
+            //        renderDelSprite.flipX = false; //Desactivamos la casilla Flip
+            //        estoyGirado = false; //Guardamos nuestra variable girado como false
+            //    }
+            //}
 
             //Si pulso la tecla espacio, me voy a mi componente rigidbody y le aplico un impulso hacia arriba
 
@@ -109,7 +109,8 @@ public class Jump2 : MonoBehaviour
                     if (numeroDeSaltos == 0) //Si es la primera vez que salta
                     {
                         miRigidbody.velocity += fuerzaPrimerSalto; //Empujamos al personaje hacia la dirección que le pasemos
-                     //   SonidoSalto.Play();
+                                                                   //   SonidoSalto.Play();
+                        Debug.Log("primero");
                     }
                     numeroDeSaltos++; //Sumamos 1 al contador de saltos
                 }
@@ -120,12 +121,15 @@ public class Jump2 : MonoBehaviour
                         if (miRigidbody.velocity.y < 0) //Si estamos cayendo, nos para al jugador justo antes de impulsarlo
                         {
                             miRigidbody.velocity = new Vector2(miRigidbody.velocity.x, 0);
+                            Debug.Log("segundo");
                         }
                         if (numeroDeSaltos == 1) //Si es la segunda vez que salta
                         {
                             miRigidbody.velocity += fuerzaSegundoSalto; //Empujamos al personaje hacia la dirección que le pasemos
+                            Debug.Log("tercero");
                         }
                         numeroDeSaltos++; //Sumamos 1 al contador de saltos
+                        Debug.Log("cuarto");
                     }
                 }
             }
