@@ -31,9 +31,9 @@ public class Jump2 : MonoBehaviour
 
     void Update()
     {
-        //aqui guardamos los datos de posicion en cada frame
-        PlayerPrefs.SetFloat("posX", transform.position.x);
-        PlayerPrefs.SetFloat("posY", transform.position.y);
+        ////aqui guardamos los datos de posicion en cada frame
+        //PlayerPrefs.SetFloat("posX", transform.position.x);
+        //PlayerPrefs.SetFloat("posY", transform.position.y);
 
         //Ignoramos todas las capas menos "Suelo"
         RaycastHit2D rightHit = Physics2D.Raycast(transform.position + desplazamiento, -Vector2.up, 1f, mascara);
