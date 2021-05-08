@@ -166,7 +166,7 @@ public class Jump2 : MonoBehaviour
                 // animator.SetTrigger("Muero");
                 //gameOver = true;
                 // FindObjectOfType<Volumen>().DeathSound();
-                particulas.SetActive(true);
+               // particulas.SetActive(true);
                 //this.enabled = false;
             }
             //if (collision.transform.CompareTag("FinalGem"))
