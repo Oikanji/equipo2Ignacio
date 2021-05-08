@@ -8,7 +8,7 @@ public class Jump2 : MonoBehaviour
     SpriteRenderer renderDelSprite;
     Animator animator;
     public float velocidad, velocidadMaxima;
-   // bool estoyGirado = false;
+    bool estoyGirado = false;
     public Vector2 fuerzaPrimerSalto, fuerzaSegundoSalto;
     private int numeroDeSaltos = 0;
     public LayerMask mascara;
@@ -23,17 +23,19 @@ public class Jump2 : MonoBehaviour
 
     void Start()
     {
+
         miRigidbody = GetComponent<Rigidbody2D>();
         renderDelSprite = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
 
     void Update()
     {
-        ////aqui guardamos los datos de posicion en cada frame
-        //PlayerPrefs.SetFloat("posX", transform.position.x);
-        //PlayerPrefs.SetFloat("posY", transform.position.y);
+        float h = Input.GetAxis("Horizontal") * velocidad * Time.deltaTime;
+        //aqui guardamos los datos de posicion en cada frame
+        PlayerPrefs.SetFloat("posX", transform.position.x);
+        PlayerPrefs.SetFloat("posY", transform.position.y);
 
         //Ignoramos todas las capas menos "Suelo"
         RaycastHit2D rightHit = Physics2D.Raycast(transform.position + desplazamiento, -Vector2.up, 1f, mascara);
@@ -57,47 +59,46 @@ public class Jump2 : MonoBehaviour
         //Utilizar nuestro componente animator y asignarle al parámetro "Velocidad"
         //la velocidad de nuestro personaje
 
-       // animator.SetFloat("Velocidad", Mathf.Abs(miRigidbody.velocity.x));
+        //animator.SetFloat("Velocidad", Mathf.Abs(miRigidbody.velocity.x));
 
         //Si el contador de saltos es 0, significa que no estamos saltando, si es mayor, si saltamos
 
-        //if (numeroDeSaltos > 0)
-        //{
-        //    animator.SetBool("Saltando", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("Saltando", false);
-        //}
+        if (numeroDeSaltos > 0)
+        {
+            animator.SetBool("Salto", true);
+        }
+        else
+        {
+            animator.SetBool("Salto", false);
+        }
 
         if (gameWin == false)
         {
-            //if (Input.GetKey(KeyCode.A)) //andar hacia la izquierda
-            //{
-            //    if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
-            //    {
-            //        miRigidbody.AddForce(Vector2.left * velocidad);
-            //    }
-            //    //AQUI
-            //    if (!estoyGirado) //estoyGirado == false
-            //    {
-            //        renderDelSprite.flipX = true; //Activamos la casilla Flip
-            //        estoyGirado = true;
-            //    }
-            //}
-            //if (Input.GetKey(KeyCode.D)) //andar hacia la derecha
-            //{
-            //    if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
-            //    {
-            //        miRigidbody.AddForce(Vector2.right * velocidad);
-            //    }
-            //    //AQUI
-            //    if (estoyGirado)
-            //    {
-            //        renderDelSprite.flipX = false; //Desactivamos la casilla Flip
-            //        estoyGirado = false; //Guardamos nuestra variable girado como false
-            //    }
-            //}
+            if (Mathf.Abs(miRigidbody.velocity.x) < velocidadMaxima)
+            {
+                miRigidbody.velocity += new Vector2(h, 0);
+                print("entro");
+            }
+            animator.SetFloat("Velocidad", Mathf.Abs(miRigidbody.velocity.x));
+            if (Input.GetKey(KeyCode.A)) //andar hacia la izquierda
+            {
+
+                //AQUI
+                if (!estoyGirado) //estoyGirado == false
+                {
+                    renderDelSprite.flipX = true; //Activamos la casilla Flip
+                    estoyGirado = true;
+                }
+            }
+            if (Input.GetKey(KeyCode.D)) //andar hacia la derecha
+            {
+                //AQUI
+                if (estoyGirado)
+                {
+                    renderDelSprite.flipX = false; //Desactivamos la casilla Flip
+                    estoyGirado = false; //Guardamos nuestra variable girado como false
+                }
+            }
 
             //Si pulso la tecla espacio, me voy a mi componente rigidbody y le aplico un impulso hacia arriba
 
@@ -154,45 +155,48 @@ public class Jump2 : MonoBehaviour
         numeroDeSaltos = 0; //Ponemos el contador de saltos a 0
     }
 
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (!gameOver || !gameWin)
-    //    {
-    //        if (collision.transform.CompareTag("Enemy"))
-    //        {
-    //            animator.SetTrigger("Muero");
-    //            gameOver = true;
-    //            FindObjectOfType<Volumen>().DeathSound();
-    //            particulas.SetActive(true);
-    //            this.enabled = false;
-    //        }
-    //        if (collision.transform.CompareTag("FinalGem"))
-    //        {
-    //            FindObjectOfType<Volumen>().WinSound();
-    //            particulasWin.SetActive(true);
-    //            gameWin = true;
-    //            gameOver = false;
-    //        }
-    //    }
-    //    if (!gameOver)
-    //    {
-    //        if (collision.transform.tag == "Key")
-    //        {
-    //            Destroy(collision.gameObject);
-    //            havekey = true;
-    //        }
-    //    }
-    //    if (collision.transform.tag == "Door")
-    //    {
-    //        if (havekey)
-    //        {
-    //            print("Level finished");
-    //            SceneManager.LoadScene("Menu");
-    //        }
-    //        else
-    //        {
-    //            print("U need key");
-    //        }
-    //    }
-    //}
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!gameOver || !gameWin)
+        {
+            if (collision.transform.CompareTag("enemy"))
+            {
+
+                transform.position = new Vector2(-6.992f, -0.588f);
+                // animator.SetTrigger("Muero");
+                gameOver = true;
+                // FindObjectOfType<Volumen>().DeathSound();
+                particulas.SetActive(true);
+                this.enabled = false;
+            }
+            //if (collision.transform.CompareTag("FinalGem"))
+            //{
+            //    FindObjectOfType<Volumen>().WinSound();
+            //    particulasWin.SetActive(true);
+            //    gameWin = true;
+            //    gameOver = false;
+            //}
+        }
+        //    if (!gameOver)
+        //    {
+        //        if (collision.transform.tag == "Key")
+        //        {
+        //            Destroy(collision.gameObject);
+        //            havekey = true;
+        //        }
+        //    }
+        //    if (collision.transform.tag == "Door")
+        //    {
+        //        if (havekey)
+        //        {
+        //            print("Level finished");
+        //            SceneManager.LoadScene("Menu");
+        //        }
+        //        else
+        //        {
+        //            print("U need key");
+        //        }
+        //    }
+        //}
+    }
 }

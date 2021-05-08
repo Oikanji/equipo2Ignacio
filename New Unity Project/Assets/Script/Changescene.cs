@@ -15,7 +15,8 @@ public class Changescene : MonoBehaviour
 
     public void PortalScene()
     {
-        SceneManager.LoadScene("NightScene");
+        
+        SceneManager.LoadScene("Sunset_Night");
 
     }
 }

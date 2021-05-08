@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EscenaIgnacio.unity
+    path: Assets/Scenes/Sunset_Day.unity
     guid: 958cf495b47351e40bfad3cecc5716e3
+  - enabled: 1
+    path: Assets/Scenes/Sunset_Night.unity
+    guid: 3e88dc7c6c633b24ab2596d643916ae6
   - enabled: 1
     path: Assets/Scenes/NightScene.unity
     guid: ce767ffb1d6867b45bf9de61264fa420

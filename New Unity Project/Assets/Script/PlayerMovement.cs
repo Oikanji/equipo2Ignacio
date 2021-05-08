@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed;
     public static bool movimiento;
     public GameObject panel;
+    public Vector3 desplazamiento;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // && se cumple ambas condiciones, || una de las dos
+        
 
         //izquierda
         if (movimiento == true)

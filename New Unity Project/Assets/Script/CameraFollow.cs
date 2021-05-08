@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        Vector3 objetivo = new Vector3(transformDelPlayer.position.x, -0.1f, -10);
+        Vector3 objetivo = new Vector3(transformDelPlayer.position.x, transformDelPlayer.position.y, -5);
         transform.position = Vector3.Lerp(transform.position, objetivo, velocidadSeguimiento * Time.deltaTime);
     }
 }
