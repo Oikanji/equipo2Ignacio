@@ -14,7 +14,7 @@ public class Jump2 : MonoBehaviour
     public LayerMask mascara;
     public bool sobreElSuelo;
     public Vector3 desplazamiento;
-    public static bool gameOver;
+    //public static bool gameOver;
     public GameObject particulas;
     public GameObject particulasWin;
     private AudioSource SonidoSalto;
@@ -157,17 +157,17 @@ public class Jump2 : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!gameOver || !gameWin)
-        {
+        //if (!gameOver || !gameWin)
+       // {
             if (collision.transform.CompareTag("enemy"))
             {
 
                 transform.position = new Vector2(-6.992f, -0.588f);
                 // animator.SetTrigger("Muero");
-                gameOver = true;
+                //gameOver = true;
                 // FindObjectOfType<Volumen>().DeathSound();
                 particulas.SetActive(true);
-                this.enabled = false;
+                //this.enabled = false;
             }
             //if (collision.transform.CompareTag("FinalGem"))
             //{
@@ -198,5 +198,5 @@ public class Jump2 : MonoBehaviour
         //        }
         //    }
         //}
-    }
+   // }
 }
